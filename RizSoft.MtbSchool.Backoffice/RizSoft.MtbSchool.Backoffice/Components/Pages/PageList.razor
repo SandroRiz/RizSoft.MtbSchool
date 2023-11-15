@@ -1,0 +1,22 @@
+﻿@page "/pages"
+@inject PageService PageService
+@using Syncfusion.Blazor.RichTextEditor
+@rendermode InteractiveServer
+
+<h3>Page List</h3>
+<p> Sample of Editing a Content Page</p>
+
+  <SfRichTextEditor>
+    @((MarkupString)content)
+</SfRichTextEditor>
+
+@code {
+
+    public string content;
+    protected async override Task OnInitializedAsync()
+    {
+        var page = await PageService.GetAsync(1);
+        if (page is not null)
+            content = page.PageContent;
+    }
+}

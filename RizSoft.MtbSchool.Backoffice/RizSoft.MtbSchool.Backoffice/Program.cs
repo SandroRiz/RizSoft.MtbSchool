@@ -15,6 +15,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
+//builder.Services.AddServerSideBlazor().AddHubOptions(o => { o.MaximumReceiveMessageSize = 102400000; });
 builder.Services.AddSyncfusionBlazor();
 
 builder.Services.AddCascadingAuthenticationState();
@@ -45,6 +46,7 @@ builder.Services.AddDbContextFactory<MtbSchoolContext>(o => o.UseSqlServer(conne
 
 builder.Services.AddScoped<TourService>();
 builder.Services.AddScoped<CourseService>();
+builder.Services.AddScoped<PageService>();
 
 var app = builder.Build();
 

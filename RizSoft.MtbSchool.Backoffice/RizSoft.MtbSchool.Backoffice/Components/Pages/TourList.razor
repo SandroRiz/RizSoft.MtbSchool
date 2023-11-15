@@ -1,0 +1,23 @@
+﻿@page "/tours"
+@inject TourService TourService
+@using Syncfusion.Blazor.Grids
+@rendermode InteractiveServer
+
+<h3>Tours List</h3>
+
+<SfGrid DataSource="@Tours" AllowPaging="true">
+    <GridColumns>
+        <GridColumn Field="TourDate" HeaderText="Data"></GridColumn>
+        <GridColumn Field="TourTitle" HeaderText="Nome"></GridColumn>
+        <GridColumn Field="IsOnline" HeaderText="Online"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code {
+    public List<Tour> Tours { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        Tours = await TourService.ListAsync();
+    }
+}

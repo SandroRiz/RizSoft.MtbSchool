@@ -5,8 +5,10 @@
 
 <h3>Courses</h3>
 
-<SfGrid DataSource="@Courses" >
-
+<SfGrid DataSource="@Courses">
+    <GridColumns>
+        <GridColumn Field="Title" HeaderText="Nome"></GridColumn>
+    </GridColumns>
 </SfGrid>
 
 @code {

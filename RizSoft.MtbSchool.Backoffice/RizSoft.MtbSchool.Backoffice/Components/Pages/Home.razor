@@ -1,22 +1,31 @@
 ﻿@page "/"
+@using Syncfusion.Blazor.Cards
 @inject TourService TourService
 @inject CourseService CourseService
 <PageTitle>MTB School for Kids Backoffice Home</PageTitle>
 
 <h1>Admin Home Page</h1>
-
-In this backoffice it will managed tours, courses, trainer, students, and content for public website
+<img src="/img/breadcrumbs-coursejunior-bg.jpg" />
+<p class="my-3">In this backoffice it will managed tours, courses, trainer, students, and content for public website</p>
 @if (tours != null)
 {
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Tours Done</h5>
-
-            <h2 class="card-text">@tours.Count</h2>
-
+    <div class="row">
+        <div class="col">
+            <SfCard>
+                <CardHeader Title="Courses" SubTitle="Courses done in 2023"></CardHeader>
+                <CardContent>24</CardContent>
+            </SfCard>
         </div>
-    </div>
+        <div class="col">
+            <SfCard>
+                <CardHeader Title="Tours" SubTitle="Tours done in 2023"></CardHeader>
+                <CardContent>@tours.Count</CardContent>
+                </SfCard>
+            </div>
+        </div>
 }
+
+
 @code
 {
     private List<Tour> tours = new();

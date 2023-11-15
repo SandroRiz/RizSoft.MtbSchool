@@ -31,11 +31,11 @@ public partial class Page
 
     public string Slug { get; set; }
 
-    public bool IsDeleted { get; set; }
+    public bool? IsDeleted { get; set; }
 
     public int? PhotoGalleryId { get; set; }
 
-    public int SortOrder { get; set; }
+    public int? SortOrder { get; set; }
 
     public virtual PhotoGallery PhotoGallery { get; set; }
 }

@@ -9,6 +9,8 @@ public class TourService : BaseService<Tour,int>
     public async Task<List<Tour>> TopListAsync(int top)
     {
         using var ctx = await CtxFactory.CreateDbContextAsync();
+       
+      
         return await ctx.Tours
           
             .OrderByDescending( x => x.TourDate)

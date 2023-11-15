@@ -1,0 +1,30 @@
+﻿@page "/certificates"
+@using System.IO;
+@using Syncfusion.Blazor.DocumentEditor;
+@using System.Text.Json
+@rendermode InteractiveServer
+<h3>Certificates</h3>
+
+<SfDocumentEditorContainer @ref="container" EnableToolbar=true>
+    <DocumentEditorContainerEvents Created="OnCreated"></DocumentEditorContainerEvents>
+</SfDocumentEditorContainer>
+@code {
+    SfDocumentEditorContainer container;
+
+    public void OnCreated(object args)
+    {
+        string filePath = "wwwroot/certificate/template.docx";
+        using (FileStream fileStream = new FileStream(filePath, System.IO.FileMode.Open, System.IO.FileAccess.Read))
+        {
+            WordDocument document = WordDocument.Load(fileStream, ImportFormatType.Docx);
+            string json = JsonSerializer.Serialize(document);
+            document.Dispose();
+            //To observe the memory go down, null out the reference of document variable.
+            document = null;
+            SfDocumentEditor editor = container.DocumentEditor;
+            editor.OpenAsync(json);
+            //To observe the memory go down, null out the reference of json variable.
+            json = null;
+        }
+    }
+}

@@ -5,6 +5,7 @@ using RizSoft.MtbSchool.Backoffice.Client.Pages;
 using RizSoft.MtbSchool.Backoffice.Components;
 using RizSoft.MtbSchool.Backoffice.Components.Account;
 using RizSoft.MtbSchool.Backoffice.Data;
+using RizSoft.MtbSchool.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +37,11 @@ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.Requ
     .AddDefaultTokenProviders();
 
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
+
+builder.Services.AddDbContextFactory<MtbSchoolContext>(o => o.UseSqlServer(connectionString));
+
+builder.Services.AddScoped<TourService>();
+builder.Services.AddScoped<CourseService>();
 
 var app = builder.Build();
 

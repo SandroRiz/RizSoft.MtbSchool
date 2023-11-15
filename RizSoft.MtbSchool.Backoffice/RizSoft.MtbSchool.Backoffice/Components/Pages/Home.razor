@@ -1,7 +1,29 @@
 ﻿@page "/"
+@inject TourService TourService
+@inject CourseService CourseService
+<PageTitle>MTB School for Kids Backoffice Home</PageTitle>
 
-<PageTitle>Home</PageTitle>
+<h1>Admin Home Page</h1>
 
-<h1>Hello, world!</h1>
+In this backoffice it will managed tours, courses, trainer, students, and content for public website
+@if (tours != null)
+{
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Tours Done</h5>
 
-Welcome to your new app.
+            <h2 class="card-text">@tours.Count</h2>
+
+        </div>
+    </div>
+}
+@code
+{
+    private List<Tour> tours = new();
+    private List<Course> courses = new();
+    protected override async Task OnInitializedAsync()
+    {
+        tours = await TourService.ListAsync();
+        courses = await CourseService.ListAsync();
+    }
+}

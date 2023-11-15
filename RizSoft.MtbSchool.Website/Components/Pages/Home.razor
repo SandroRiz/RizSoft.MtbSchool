@@ -1,29 +1,38 @@
 ﻿@page "/"
 @inject TourService TourService
 @inject CourseService CourseService
+@attribute [StreamRendering]
 
 <PageTitle>My MTB School for Kids - Home</PageTitle>
 
 <h1>Mtb School Public Website</h1>
 
-<h3>Latest Tours </h3>
-<ul>
-    @foreach (var item in tours)
-    {
-        <li>@item.TourDate.ToShortDateString() - @item.TourTitle</li>    
-    }
-    
-</ul>
+@if (tours is not null && courses is not null)
+{
+    <h3>Latest Tours </h3>
+    <ul>
+        @foreach (var item in tours)
+        {
+            <li>@item.TourDate.ToShortDateString()
+                - @item.TourTitle
+            </li>
+        }
+
+    </ul>
 
 
-<h3>Next Courses </h3>
-<ul>
-    @foreach (var item in courses)
-    {
-        <li>@item.Title</li>
-    }
-</ul>
-
+    <h3>Next Courses </h3>
+    <ul>
+        @foreach (var item in courses)
+        {
+            <li>@item.Title</li>
+        }
+    </ul>
+}
+else
+{
+    <p>Loading...</p>
+}
 <div class="row">
     <div class="col-4">
         <img src="/img/coursejunior-1-1200x800-original.jpg" style="width:450px;" />
@@ -35,10 +44,11 @@
 
 @code
 {
-    private List<Tour> tours = new();
-    private List<Course> courses = new();
+    private List<Tour> tours;
+    private List<Course> courses;
     protected override async Task OnInitializedAsync()
     {
+        await Task.Delay(3000); //simulate delay to test StreamRendering
         tours = await TourService.TopListAsync(5);
         courses = await CourseService.ListAsync();
     }

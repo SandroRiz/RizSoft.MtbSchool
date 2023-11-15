@@ -1,0 +1,6 @@
+@RizSoft.MtbSchool.WebApi_HostAddress = http://localhost:5039
+
+GET {{RizSoft.MtbSchool.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

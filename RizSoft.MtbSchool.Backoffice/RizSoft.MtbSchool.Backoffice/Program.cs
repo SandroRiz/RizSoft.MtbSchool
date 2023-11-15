@@ -6,6 +6,7 @@ using RizSoft.MtbSchool.Backoffice.Components;
 using RizSoft.MtbSchool.Backoffice.Components.Account;
 using RizSoft.MtbSchool.Backoffice.Data;
 using RizSoft.MtbSchool.Services;
+using Syncfusion.Blazor;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+
+builder.Services.AddSyncfusionBlazor();
 
 builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<IdentityUserAccessor>();
@@ -44,6 +47,8 @@ builder.Services.AddScoped<TourService>();
 builder.Services.AddScoped<CourseService>();
 
 var app = builder.Build();
+
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NHaF5cWWdCf1FpRGZGfV5yd0VHYVZURHxeQE0SNHVRdkdgWH5fdXVXRGhYUUB3WEM=");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

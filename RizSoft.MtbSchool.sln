@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RizSoft.MtbSchool.Applicati
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RizSoft.MtbSchool.Maui.App", "RizSoft.MtbSchool.Maui.App\RizSoft.MtbSchool.Maui.App.csproj", "{D7E8110E-7A4A-4F22-A8F4-75CFA71E3A5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RizSoft.MtbSchool.Website", "RizSoft.MtbSchool.Website\RizSoft.MtbSchool.Website.csproj", "{A4B770FD-8DEB-4288-AC0E-B5CED28F6016}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RizSoft.MtbSchool.Website", "RizSoft.MtbSchool.Website\RizSoft.MtbSchool.Website.csproj", "{A4B770FD-8DEB-4288-AC0E-B5CED28F6016}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

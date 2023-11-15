@@ -1,0 +1,47 @@
+﻿@page "/calendar"
+@using Syncfusion.Blazor.Schedule
+@using Syncfusion.Blazor.SplitButtons
+@rendermode InteractiveServer
+
+<h3>Calendar</h3>
+
+<SfDropDownButton Content="Filter..." CssClass="mb-3">
+    <DropDownMenuItems>
+        <DropDownMenuItem Text="Show Only My Courses"></DropDownMenuItem>
+        <DropDownMenuItem Text="Show All Courses"></DropDownMenuItem>
+    </DropDownMenuItems>
+</SfDropDownButton>
+
+<SfSchedule TValue="AppointmentData" Height="650px" @bind-SelectedDate="@CurrentDate">
+    <ScheduleEventSettings DataSource="@DataSource"></ScheduleEventSettings>
+    <ScheduleViews>
+        <ScheduleView Option="View.Day"></ScheduleView>
+        <ScheduleView Option="View.Week"></ScheduleView>
+        <ScheduleView Option="View.WorkWeek"></ScheduleView>
+        <ScheduleView Option="View.Month"></ScheduleView>
+        <ScheduleView Option="View.Agenda"></ScheduleView>
+    </ScheduleViews>
+</SfSchedule>
+
+@code {
+    public class AppointmentData
+    {
+        public int Id { get; set; }
+        public string Subject { get; set; }
+        public string Location { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+        public string Description { get; set; }
+        public bool IsAllDay { get; set; }
+        public string RecurrenceRule { get; set; }
+        public string RecurrenceException { get; set; }
+        public Nullable<int> RecurrenceID { get; set; }
+    }
+
+    DateTime CurrentDate = DateTime.Now;
+    List<AppointmentData> DataSource = new List<AppointmentData>
+    {
+        new AppointmentData { Id = 1, Subject = "Corso Bambini 1", StartTime = new DateTime(2023, 11, 13, 10, 0, 0) , EndTime = new DateTime(2023, 11, 13, 12, 0, 0) },
+        new AppointmentData { Id = 2, Subject = "Corso Bambini 2", StartTime = new DateTime(2023, 11, 15, 14, 0, 0) , EndTime = new DateTime(2023, 11, 15, 16, 0, 0) }
+    };
+}

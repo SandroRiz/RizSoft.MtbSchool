@@ -1,0 +1,19 @@
+﻿@page "/courses"
+@inject CourseService CourseService
+@using Syncfusion.Blazor.Grids
+@rendermode InteractiveServer
+
+<h3>Courses</h3>
+
+<SfGrid DataSource="@Courses" >
+
+</SfGrid>
+
+@code {
+    public List<Course> Courses { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        Courses = await CourseService.ListAsync();
+    }
+}
